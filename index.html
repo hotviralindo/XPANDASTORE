@@ -14,15 +14,8 @@
             flex-direction: column;
             margin: 0;
             padding: 20px;
-            background-color: #000; /* Mengubah latar belakang menjadi hitam */
-            color: #fff; /* Mengubah warna teks menjadi putih */
-        }
-
-        /* Header styling */
-        h1 {
-            color: #ff5733; /* Warna teks header */
-            margin-bottom: 20px;
-            text-align: center;
+            background-color: #f4f4f9;
+            color: #333;
         }
 
         /* Kontainer untuk seluruh galeri video */
@@ -42,7 +35,6 @@
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             padding: 20px;
-            text-align: center;
         }
 
         /* Kotak background di setiap video */
@@ -51,7 +43,6 @@
             border-radius: 8px;
             padding: 10px;
             overflow: hidden;
-            margin-bottom: 10px;
         }
 
         /* Animasi hover pada kotak video */
@@ -69,52 +60,28 @@
             border-radius: 8px;
             object-fit: cover; /* Memastikan video tidak terdistorsi */
         }
-
-        /* Styling deskripsi */
-        .description {
-            font-size: 14px;
-            color: #333;
-            background-color: #f9f9f9; /* Latar belakang deskripsi */
-            border: 1px solid #ddd; /* Garis batas */
-            border-radius: 5px; /* Sudut melengkung */
-            padding: 15px; /* Ruang dalam */
-            margin: 10px 0;
-            line-height: 1.5; /* Jarak antar baris */
-        }
-
-        /* Styling tombol join group */
-        .join-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #ff5733;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Hover efek untuk tombol */
-        .join-button:hover {
-            background-color: #e74c3c;
-        }
     </style>
 </head>
 <body>
 
-    <h1>PILIH VIDEONYA DI ETALASE BAWAH INI</h1> <!-- Header Text -->
-
     <div class="gallery-container">
         <div class="video-container">
             <div class="video-background">
-                <iframe id="video1" src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay" allowfullscreen></iframe>
+                <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
             </div>
-            <p class="description">Tonton video secara full tanpa di cut, klik join group di bawah ini untuk bergabung ke grup Hotviral.</p>
-            <a href="https://example.com/join-group-hotviral" class="join-button" target="_blank">JOIN GROUP HOTVIRAL</a>
         </div>
+        <div class="video-container">
+            <div class="video-background">
+                <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
+            </div>
+        </div>
+        <div class="video-container">
+            <div class="video-background">
+                <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
+            </div>
+        </div>
+        <!-- Tambahkan video lainnya di sini -->
     </div>
-
+    
 </body>
 </html>
