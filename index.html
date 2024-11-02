@@ -4,67 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XHOTVIRAL ID</title>
-    <style>
-        /* Basic CSS Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #141414;
-            color: #e5e5e5;
-            padding: 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #e50914;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .video-frame {
-            width: 100%;
-            height: 200px;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .video-frame:hover {
-            transform: scale(1.05);
-        }
-
-        /* Media query for larger screens */
-        @media (min-width: 600px) {
-            h1 {
-                font-size: 28px;
-            }
-            
-            .video-frame {
-                height: 300px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>XHOTVIRAL ID</h1>
@@ -72,7 +12,6 @@
     <div id="videoContainer" class="container"></div>
 
     <script>
-//            "",
         const videoLinks = [
             "",
             "",
@@ -96,10 +35,9 @@
             "https://drive.google.com/file/d/1HkRzxIaaClWoD7olP0icw8uOljZTG_p4/preview"
         ];
 
-        // Function to load videos into the container
         function loadVideos() {
             const container = document.getElementById('videoContainer');
-            container.innerHTML = ''; // Clear existing content
+            container.innerHTML = '';
 
             videoLinks.forEach(link => {
                 const iframe = document.createElement('iframe');
@@ -111,7 +49,6 @@
             });
         }
 
-        // Load videos on page load
         loadVideos();
     </script>
 </body>
