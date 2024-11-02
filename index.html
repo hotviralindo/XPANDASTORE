@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video dari Google Drive</title>
+    <title>Etalase Video dari Google Drive</title>
     <style>
         /* Mengatur latar belakang halaman */
         body {
@@ -11,8 +11,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 20px;
             background-color: #f4f4f9;
         }
 
@@ -23,19 +23,9 @@
             border-radius: 8px;
             padding: 20px;
             text-align: center;
-            width: 90%;
+            width: 100%;
             max-width: 720px;
-        }
-
-               /* Kotak tampilan video */
-        .video-container {
-            background-color: #ffffff;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            width: 90%;
-            max-width: 720px;
+            margin-bottom: 20px;
         }
 
         /* Judul */
@@ -51,6 +41,7 @@
             height: 200px;
             border: none;
             border-radius: 8px;
+            margin-bottom: 15px;
         }
 
         /* Media query untuk layar kecil (HP) */
@@ -64,15 +55,19 @@
 <body>
 
     <div class="video-container">
-        <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" 
+        <h1>Video 1</h1>
+        <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
     </div>
-            
+
     <div class="video-container">
-        <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" 
+        <h1>Video 2</h1>
+        <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
     </div>
 
+    <div class="video-container">
+        <h1>Video 3</h1>
+        <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
+    </div>
 
-
-            
 </body>
 </html>
