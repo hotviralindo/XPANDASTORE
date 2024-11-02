@@ -29,7 +29,6 @@
 
         /* Kotak tampilan video */
         .video-container {
-            position: relative;
             background-color: #ffffff;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             border-radius: 12px;
@@ -43,6 +42,7 @@
             background-color: #e9eff5;
             border-radius: 8px;
             padding: 10px;
+            overflow: hidden;
         }
 
         /* Animasi hover pada kotak video */
@@ -58,6 +58,7 @@
             border: none;
             aspect-ratio: 16 / 9;
             border-radius: 8px;
+            object-fit: cover; /* Memastikan video tidak terdistorsi */
         }
     </style>
 </head>
@@ -79,21 +80,7 @@
                 <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
             </div>
         </div>
-        <div class="video-container">
-            <div class="video-background">
-                <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
-            </div>
-        </div>
-        <div class="video-container">
-            <div class="video-background">
-                <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
-            </div>
-        </div>
-        <div class="video-container">
-            <div class="video-background">
-                <iframe src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay"></iframe>
-            </div>
-        </div>
+        <!-- Tambahkan video lainnya di sini -->
     </div>
     
 </body>
