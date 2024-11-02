@@ -100,48 +100,21 @@
         .join-button:hover {
             background-color: #e74c3c;
         }
-
-        /* Styling tombol putar video */
-        .play-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Hover efek untuk tombol putar */
-        .play-button:hover {
-            background-color: #218838;
-        }
     </style>
 </head>
 <body>
 
-    <h1>Etalase Video Hotviral</h1> <!-- Header Text -->
+    <h1>PILIH VIDEONYA DI ETALASE BAWAH INI</h1> <!-- Header Text -->
 
     <div class="gallery-container">
         <div class="video-container">
             <div class="video-background">
                 <iframe id="video1" src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" allow="autoplay" allowfullscreen></iframe>
             </div>
-            <a href="#" class="play-button" onclick="playVideo('video1'); return false;">Putar Video</a>
             <p class="description">Tonton video secara full tanpa di cut, klik join group di bawah ini untuk bergabung ke grup Hotviral.</p>
-            <a href="https://example.com/join-group-hotviral" class="join-button" target="_blank">Join Group Hotviral</a>
+            <a href="https://example.com/join-group-hotviral" class="join-button" target="_blank">JOIN GROUP HOTVIRAL</a>
         </div>
     </div>
 
-    <script>
-        function playVideo(videoId) {
-            const video = document.getElementById(videoId);
-            video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-        }
-    </script>
-    
 </body>
 </html>
