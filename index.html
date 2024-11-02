@@ -28,7 +28,27 @@
             from { transform: translateX(0); }
             to { transform: translateX(-100%); }
         }
-        
+
+        /* Button style */
+        .starbot-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        .starbot-button:hover {
+            background-color: #e67e22;
+        }
+
         /* Container style for vertical video list */
         #videoContainer {
             display: flex;
@@ -76,31 +96,36 @@
         <span>TUNGGU 30 DETIK UNTUK LOADING VIDEONYA !! - JANGAN LUPA JOIN GROUP BOKEP HOTIRAL YA GESS </span>
     </div>
 
+    <!-- StarBot Button -->
+    <button class="starbot-button" onclick="window.location.href='https://wa.me/6288808383574?text=mau%20join%20group%20min';">
+        JOIN GROUP BOKEP HOTVIRAL
+    </button>
+
     <!-- Video container where all videos will be added in a vertical layout -->
     <div id="videoContainer" class="container"></div>
 
     <script>
         const videoLinks = [
-            "https://drive.google.com/file/d/18cb9Peh5DX1pYCTQeY050XHJMpBSathB/preview",
-            "https://drive.google.com/file/d/1ZQD3GjxSA-ZxilMFg4O827ZNbvkQJgE5/preview",
-            "https://drive.google.com/file/d/1SBvHEVT8Iaii45jg5ucWCNqbCfUgYriw/preview",
-            "https://drive.google.com/file/d/1y7lqM41L7Ssm5sdrssjLxgZWNolVZBhl/preview",
-            "https://drive.google.com/file/d/1AssS8vpCb181FqKw6-89qbmgG3XymsnV/preview",
-            "https://drive.google.com/file/d/1GoXkCQkElVnpmyoIS4n3osQ6bGfePvcS/preview",
-            "https://drive.google.com/file/d/1IR5FC4PC146lu11aAcPzRc8n09Yr7_lR/preview",
-            "https://drive.google.com/file/d/1en-6F9Y13WukFRnGyjqqrmcnPPuFVfYS/preview",
-            "https://drive.google.com/file/d/1en-6F9Y13WukFRnGyjqqrmcnPPuFVfYS/preview",
-            "https://drive.google.com/file/d/184WkyLKPe69Oxzv0fffXWW12UI92C-57/preview",
-            "https://drive.google.com/file/d/1tedYL3SfdYdTlyFWzqDuazWhcv6nR8zv/preview",
-            "https://drive.google.com/file/d/1ONMX8yuBzV0Qbt8F0P5iC6wwW2MEpLmG/preview",
-            "https://drive.google.com/file/d/16Ke837FrjDlWEJUbXIr-HZ6W2rHHjMpm/preview",
-            "https://drive.google.com/file/d/1Eb0DFehrA7yRnwdRzOWmVZr4lBoyW386/preview",
-            "https://drive.google.com/file/d/1yTCe8XsOv-yDZgeRcy69HGIQ8ugBmcWD/preview",
-            "https://drive.google.com/file/d/1vYDgSdyi2LbFhgkVbO2IBR6oa-XdSMgu/preview",
-            "https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview",
-            "https://drive.google.com/file/d/1kDiojWAuaCNeOCxqL-Ccgc_xAMFhw46O/preview",
-            "https://drive.google.com/file/d/1HkRzxIaaClWoD7olP0icw8uOljZTG_p4/preview"
-        ];
+    "https://drive.google.com/file/d/18cb9Peh5DX1pYCTQeY050XHJMpBSathB/preview",
+    "https://drive.google.com/file/d/1ZQD3GjxSA-ZxilMFg4O827ZNbvkQJgE5/preview",
+    "https://drive.google.com/file/d/1SBvHEVT8Iaii45jg5ucWCNqbCfUgYriw/preview",
+    "https://drive.google.com/file/d/1y7lqM41L7Ssm5sdrssjLxgZWNolVZBhl/preview",
+    "https://drive.google.com/file/d/1AssS8vpCb181FqKw6-89qbmgG3XymsnV/preview",
+    "https://drive.google.com/file/d/1GoXkCQkElVnpmyoIS4n3osQ6bGfePvcS/preview",
+    "https://drive.google.com/file/d/1IR5FC4PC146lu11aAcPzRc8n09Yr7_lR/preview",
+    "https://drive.google.com/file/d/1en-6F9Y13WukFRnGyjqqrmcnPPuFVfYS/preview",
+    "https://drive.google.com/file/d/184WkyLKPe69Oxzv0fffXWW12UI92C-57/preview",
+    "https://drive.google.com/file/d/1tedYL3SfdYdTlyFWzqDuazWhcv6nR8zv/preview",
+    "https://drive.google.com/file/d/1ONMX8yuBzV0Qbt8F0P5iC6wwW2MEpLmG/preview",
+    "https://drive.google.com/file/d/16Ke837FrjDlWEJUbXIr-HZ6W2rHHjMpm/preview",
+    "https://drive.google.com/file/d/1Eb0DFehrA7yRnwdRzOWmVZr4lBoyW386/preview",
+    "https://drive.google.com/file/d/1yTCe8XsOv-yDZgeRcy69HGIQ8ugBmcWD/preview",
+    "https://drive.google.com/file/d/1vYDgSdyi2LbFhgkVbO2IBR6oa-XdSMgu/preview",
+    "https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview",
+    "https://drive.google.com/file/d/1kDiojWAuaCNeOCxqL-Ccgc_xAMFhw46O/preview",
+    "https://drive.google.com/file/d/1HkRzxIaaClWoD7olP0icw8uOljZTG_p4/preview"
+];
+
 
         function loadVideos() {
             const container = document.getElementById('videoContainer');
