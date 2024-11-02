@@ -20,6 +20,7 @@
             height: 100vh;
             background-color: #f4f4f4;
             color: #333;
+            flex-direction: column;
         }
         
         .container {
@@ -53,16 +54,20 @@
     </style>
 </head>
 <body>
+    <!-- First Video Frame -->
     <div class="container">
-        <!-- Embedded Video -->
         <iframe 
             class="video-frame"
             src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" 
-            allow="autoplay"></iframe>
-        
-        <!-- Watch Video Button -->
-        <a href="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/view?usp=drivesdk" 
-           class="link" target="_blank">TONTON VIDEO</a>
+            allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    
+    <!-- Second Video Frame -->
+    <div class="container">
+        <iframe 
+            class="video-frame"
+            src="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/preview" 
+            allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
 </body>
 </html>
