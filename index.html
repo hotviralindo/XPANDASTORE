@@ -16,6 +16,7 @@
             min-height: 100vh;
             margin: 0;
             padding: 10px;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
         }
 
         /* Main container styles */
@@ -46,6 +47,7 @@
             max-width: 80%;
             margin: 0 auto 20px;
         }
+
         .button-container {
             display: flex;
             align-items: center;
@@ -60,10 +62,12 @@
             width: fit-content;
             margin: 0 auto 20px;
         }
+
         .button-container:hover {
             background-color: #444;
             transform: translateY(-2px);
         }
+
         .button-container span {
             font-size: 18px;
             font-weight: 500;
@@ -174,7 +178,6 @@
             <img src="image/7.png" alt="Thumbnail for Video 11">
             <a href="https://drive.google.com/file/d/16Ke837FrjDlWEJUbXIr-HZ6W2rHHjMpm/view" target="_blank" class="play-button">PLAY VIDEO</a>
         </div>
-
     </main>
 
 </body>
