@@ -152,14 +152,30 @@
 
     <script>
         function openModal() {
-            document.getElementById("videoModal").style.display = "flex";
-            document.getElementById("videoPlayer").play();
+            const modal = document.getElementById("videoModal");
+            const videoPlayer = document.getElementById("videoPlayer");
+            
+            modal.style.display = "flex";
+            videoPlayer.currentTime = 0; // Reset video to start
+            videoPlayer.play();
         }
 
         function closeModal() {
-            document.getElementById("videoModal").style.display = "none";
-            document.getElementById("videoPlayer").pause();
+            const modal = document.getElementById("videoModal");
+            const videoPlayer = document.getElementById("videoPlayer");
+            
+            modal.style.display = "none";
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0; // Reset video when closed
         }
+
+        // Close modal when clicking outside the video area
+        window.onclick = function(event) {
+            const modal = document.getElementById("videoModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
     </script>
 </body>
 </html>
