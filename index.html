@@ -19,6 +19,32 @@
             overflow-x: hidden; /* Prevents horizontal scrolling */
         }
 
+        /* Running text styles */
+        .running-text-container {
+            width: 100%;
+            background-color: #ff4500;
+            color: #ffffff;
+            padding: 10px 0;
+            font-weight: bold;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .running-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-text 10s linear infinite;
+        }
+
+        @keyframes scroll-text {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
         /* Main container styles */
         .container {
             width: 100%;
@@ -159,6 +185,11 @@
         <span>KLIK DISINI JOIN GROUP</span>
     </a>
 
+    <!-- Running text section -->
+    <div class="running-text-container">
+        <div class="running-text">KLIK TOMBOL MERAH BUAT MENONTON VIDEONYA</div>
+    </div>
+
     <!-- Video container with thumbnails and play buttons -->
     <main class="container">
 
@@ -167,7 +198,6 @@
             <a href="https://drive.google.com/file/d/1EgRAXow3v-CrBbKoBYoG1i945HsDgD5j/view" target="_blank" class="play-button">TONTON VIDEONYA</a>
         </div>
 
-        
         <div class="video-box">
             <img src="image/11.png" alt="Thumbnail for Video 1">
             <a href="https://drive.google.com/file/d/1en-6F9Y13WukFRnGyjqqrmcnPPuFVfYS/view" target="_blank" class="play-button">TONTON VIDEONYA</a>
