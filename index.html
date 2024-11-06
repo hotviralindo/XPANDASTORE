@@ -126,6 +126,7 @@
             margin: 20px auto;
             text-align: center;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+            animation: shake 1.5s infinite;
         }
         
         .join-group:hover {
@@ -133,11 +134,18 @@
             transform: scale(1.05);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
         }
+
+        /* Shake animation for Join Group Button */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">KLIK TOMBOL DIBAWAH BUAT JOIN GROUP BOKEP HOTVIRAL</div>
+        <div class="header">KLIK TOMBOL DIBAWAH BUAT JOIN GROUP HOTVIRAL</div>
         <a href="https://wa.me/6288808383574?text=mau%20join%20group%20min" class="join-group">JOIN GROUP HOTVIRAL</a>
         
         <div id="videoContainer"></div> <!-- Container to hold video boxes -->
@@ -147,8 +155,7 @@
         // Array of video links
         const videoLinks = [
             "https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/view",
-            "https://drive.google.com/file/d/1abcDeFgHiJKLM1234567890/view",
-            "https://drive.google.com/file/d/2XYZ1234567890abcdef/view"
+            "https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/view"
         ];
 
         const videoContainer = document.getElementById('videoContainer');
