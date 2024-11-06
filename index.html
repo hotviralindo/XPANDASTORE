@@ -97,29 +97,30 @@
     <div class="container">
         <div class="header">KLIK TOMBOL DIBAWAH BUAT JOIN GROUP HOTVIRAL</div>
         <a href="https://wa.me/6288808383574?text=mau%20join%20group%20min" class="join-group">JOIN GROUP HOTVIRAL</a>
-        <div class="video-box">
-            <img src="image/12.jpeg" alt="Image Content">
-            <!-- Direct link to Google Drive video -->
-            <a href="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/view" target="_blank" class="play-button">PLAY VIDEO</a>
-        </div>
-
-
-        <div class="video-box">
-            <img src="image/12.jpeg" alt="Image Content">
-            <!-- Direct link to Google Drive video -->
-            <a href="https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/view" target="_blank" class="play-button">PLAY VIDEO</a>
-        </div>
-
-
-
-
-
-
-
-
-
-
         
+        <div id="videoContainer"></div> <!-- Container to hold video boxes -->
     </div>
+
+    <script>
+        // Array of video links
+        const videoLinks = [
+            "https://drive.google.com/file/d/1kLVmaGT7wl6ONZ9qTCSVdqv3ui2LVr19/view",
+            "https://drive.google.com/file/d/1abcDeFgHiJKLM1234567890/view",
+            "https://drive.google.com/file/d/2XYZ1234567890abcdef/view"
+        ];
+
+        const videoContainer = document.getElementById('videoContainer');
+
+        // Dynamically create video boxes
+        videoLinks.forEach(link => {
+            const videoBox = document.createElement('div');
+            videoBox.classList.add('video-box');
+            videoBox.innerHTML = `
+                <img src="image/12.jpeg" alt="Image Content">
+                <a href="${link}" target="_blank" class="play-button">PLAY VIDEO</a>
+            `;
+            videoContainer.appendChild(videoBox);
+        });
+    </script>
 </body>
 </html>
