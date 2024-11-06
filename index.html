@@ -164,12 +164,12 @@
             const modal = document.getElementById("videoModal");
             const videoPlayer = document.getElementById("videoPlayer");
             
-            modal.style.display = "none";
-            videoPlayer.pause();
+            modal.style.display = "none"; // Hide the modal
+            videoPlayer.pause(); // Pause the video
             videoPlayer.currentTime = 0; // Reset video when closed
         }
 
-        // Close modal when clicking outside the video area
+        // Optional: Close modal when clicking outside the video area
         window.onclick = function(event) {
             const modal = document.getElementById("videoModal");
             if (event.target === modal) {
