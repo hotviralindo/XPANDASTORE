@@ -130,34 +130,67 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">VIDEO TERBARU</div>
+        <div class="header">KLIK TOMBOL DIBAWAH BUAT JOIN GROUP HOTVIRAL</div>
+        <a href="https://wa.me/6288808383574?text=mau%20join%20group%20min" class="join-group">JOIN GROUP HOTVIRAL</a>
+        
+        
+        
+        
+
         <div class="video-box">
             <img src="image/12.jpeg" alt="Image Content">
-            <div class="play-button" onclick="openModal()">PLAY VIDEO</div>
+            <div class="play-button" onclick="openModal('image/pop.mp4')">PLAY VIDEO</div>
         </div>
-        <p class="description">YANG MAU JOIN GROUP BOKEP HOTVIRAL KLIK TOMBOL DIBAWAH INI</p>
-        <a href="https://wa.me/6288808383574?text=mau%20join%20group%20min" class="join-group">JOIN GROUP HOTVIRAL</a>
+        <p class="description">UNTUK MENUTUP VIDEO KLIK SAJA DILUAR VIDEONYA</p>
+
+        <div class="video-box">
+            <img src="image/12.jpeg" alt="Image Content">
+            <div class="play-button" onclick="openModal('image/another-video.mp4')">PLAY VIDEO</div>
+        </div>
+        <p class="description">UNTUK MENUTUP VIDEO KLIK SAJA DILUAR VIDEONYA</p>
+        
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Modal -->
     <div id="videoModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <video id="videoPlayer" controls>
-                <source src="image/pop.mp4" type="video/mp4">
+                <source id="videoSource" src="" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
     </div>
 
     <script>
-        function openModal() {
+        function openModal(videoSrc) {
             const modal = document.getElementById("videoModal");
             const videoPlayer = document.getElementById("videoPlayer");
+            const videoSource = document.getElementById("videoSource");
             
+            videoSource.src = videoSrc; // Set the video source dynamically
+            videoPlayer.load(); // Reload the video with new source
             modal.style.display = "flex";
-            videoPlayer.currentTime = 0; // Reset video to start
-            videoPlayer.play();
+            videoPlayer.play(); // Play the video
         }
 
         function closeModal() {
