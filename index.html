@@ -24,7 +24,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 150%);
+    transform: translate(-50%, -50%);
     background: rgba(255, 0, 0, 0.8);
     color: white;
     font-size: 18px; /* Adjust font size */
@@ -43,39 +43,72 @@
 .play-button:hover {
     background: rgba(255, 0, 0, 1);
 }
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .video-box {
+        max-width: 90%; /* Reduce width on smaller screens */
+    }
+
+    .play-button {
+        font-size: 16px; /* Adjust font size for mobile */
+        padding: 8px 16px; /* Adjust padding for mobile */
+    }
+    
+    .play-button .play-icon {
+        font-size: 24px; /* Optional: adjust play icon size */
+    }
+}
+
+/* Media Query for Smaller Screens (portrait mode) */
+@media (max-width: 480px) {
+    .video-box {
+        max-width: 100%; /* Full width for very small screens */
+    }
+
+    .play-button {
+        font-size: 14px; /* Smaller font size for very small screens */
+        padding: 6px 12px; /* Smaller padding */
+    }
+}
 </style>
 
+<!-- Video Box 1 -->
 <div class="video-box">
     <a href="https://videy.co/v?id=d4m1pVix1" target="_blank" class="thumbnail">
         <img src="image/1.png" alt="Thumbnail for Video">
         <span class="play-button">
-            <span class="play-icon"> PUTAR VIDEO </span>
+            <span class="play-icon">PUTAR VIDEO</span>
+        </span>
     </a>
 </div>
 
-
-
+<!-- Video Box 2 -->
 <div class="video-box">
     <a href="https://videy.co/v?id=d4m1pVix1" target="_blank" class="thumbnail">
         <img src="image/1.png" alt="Thumbnail for Video">
         <span class="play-button">
-            <span class="play-icon"> PUTAR VIDEO </span>
+            <span class="play-icon">PUTAR VIDEO</span>
+        </span>
     </a>
 </div>
 
+<!-- Video Box 3 -->
 <div class="video-box">
     <a href="https://videy.co/v?id=d4m1pVix1" target="_blank" class="thumbnail">
         <img src="image/1.png" alt="Thumbnail for Video">
         <span class="play-button">
-            <span class="play-icon"> PUTAR VIDEO </span>
+            <span class="play-icon">PUTAR VIDEO</span>
+        </span>
     </a>
 </div>
 
+<!-- Video Box 4 -->
 <div class="video-box">
     <a href="https://videy.co/v?id=d4m1pVix1" target="_blank" class="thumbnail">
         <img src="image/1.png" alt="Thumbnail for Video">
         <span class="play-button">
-            <span class="play-icon"> PUTAR VIDEO </span>
+            <span class="play-icon">PUTAR VIDEO</span>
+        </span>
     </a>
 </div>
-
