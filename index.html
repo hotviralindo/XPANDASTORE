@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Etalase Produk</title>
+    <title>XPANDA PROJECT</title>
     <style>
         * {
             box-sizing: border-box;
@@ -128,21 +128,25 @@
             font-size: 0.8rem;
         }
 
-        .add-to-cart {
+        .buy-now {
             width: 100%;
             padding: 8px;
-            background-color: #4CAF50;
+            background-color: #2196F3;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
             font-size: 0.85rem;
-            transition: background-color 0.2s;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: block;
         }
 
-        .add-to-cart:active {
-            background-color: #3d8b40;
+        .buy-now:active {
+            background-color: #0b7dda;
+            transform: scale(0.95);
         }
 
         /* Untuk tablet */
@@ -209,12 +213,16 @@
             .filter-btn {
                 margin: 5px;
             }
+
+            .buy-now:hover {
+                background-color: #0b7dda;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Etalase Produk Kami</h1>
+        <h1>XPANDA PROJECT STORE</h1>
         <p>Temukan produk terbaik untuk kebutuhan Anda</p>
     </div>
 
@@ -240,7 +248,8 @@
                 description: "Smartphone flagship dengan kamera 108MP dan baterai tahan lama.",
                 image: "https://via.placeholder.com/300x200?text=Smartphone",
                 category: "elektronik",
-                rating: "★★★★★"
+                rating: "★★★★★",
+                buyPage: "beli1.php"
             },
             {
                 id: 2,
@@ -249,7 +258,8 @@
                 description: "Kemeja pria slim fit dengan bahan katun premium yang nyaman.",
                 image: "https://via.placeholder.com/300x200?text=Kemeja",
                 category: "fashion",
-                rating: "★★★★☆"
+                rating: "★★★★☆",
+                buyPage: "beli2.php"
             },
             {
                 id: 3,
@@ -258,7 +268,8 @@
                 description: "Kopi arabika kualitas premium dari perkebunan di Jawa Barat.",
                 image: "https://via.placeholder.com/300x200?text=Kopi",
                 category: "makanan",
-                rating: "★★★★★"
+                rating: "★★★★★",
+                buyPage: "beli3.php"
             },
             {
                 id: 4,
@@ -267,7 +278,8 @@
                 description: "Meja kerja modern dengan desain minimalis dan material kayu solid.",
                 image: "https://via.placeholder.com/300x200?text=Meja",
                 category: "perabotan",
-                rating: "★★★★☆"
+                rating: "★★★★☆",
+                buyPage: "beli4.php"
             },
             {
                 id: 5,
@@ -276,7 +288,8 @@
                 description: "Headphone bluetooth dengan noise cancellation dan kualitas suara tinggi.",
                 image: "https://via.placeholder.com/300x200?text=Headphone",
                 category: "elektronik",
-                rating: "★★★★★"
+                rating: "★★★★★",
+                buyPage: "beli5.php"
             },
             {
                 id: 6,
@@ -285,7 +298,8 @@
                 description: "Celana jeans pria dengan bahan stretch yang nyaman dipakai seharian.",
                 image: "https://via.placeholder.com/300x200?text=Jeans",
                 category: "fashion",
-                rating: "★★★☆☆"
+                rating: "★★★☆☆",
+                buyPage: "beli6.php"
             },
             {
                 id: 7,
@@ -294,7 +308,8 @@
                 description: "Kacang almond panggang tanpa garam, sehat dan bergizi.",
                 image: "https://via.placeholder.com/300x200?text=Almond",
                 category: "makanan",
-                rating: "★★★★☆"
+                rating: "★★★★☆",
+                buyPage: "beli7.php"
             },
             {
                 id: 8,
@@ -303,7 +318,8 @@
                 description: "Rak buku minimalis dengan kapasitas besar dan material kayu berkualitas.",
                 image: "https://via.placeholder.com/300x200?text=Rak+Buku",
                 category: "perabotan",
-                rating: "★★★☆☆"
+                rating: "★★★☆☆",
+                buyPage: "beli8.php"
             }
         ];
 
@@ -331,19 +347,10 @@
                         <p class="product-price">${product.price}</p>
                         <div class="product-rating">${product.rating}</div>
                         <p class="product-description">${product.description}</p>
-                        <button class="add-to-cart" data-id="${product.id}">+ Keranjang</button>
+                        <a href="${product.buyPage}" class="buy-now">Beli Sekarang</a>
                     </div>
                 `;
                 container.appendChild(productCard);
-            });
-
-            // Tambahkan event listener untuk tombol keranjang
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', function() {
-                    const productId = this.getAttribute('data-id');
-                    alert(`Produk ID ${productId} ditambahkan ke keranjang`);
-                    // Di sini bisa ditambahkan logika untuk menambahkan ke keranjang belanja
-                });
             });
         }
 
