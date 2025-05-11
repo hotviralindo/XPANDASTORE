@@ -2,46 +2,63 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Etalase Produk</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         body {
             background-color: #f5f5f5;
-            padding: 20px;
+            padding: 10px;
+            -webkit-text-size-adjust: 100%;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            padding: 0 10px;
         }
 
         .header h1 {
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1.5rem;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 0.9rem;
         }
 
         .filter-container {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            overflow-x: auto;
+            padding: 5px 0 15px;
+            margin-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .filter-container::-webkit-scrollbar {
+            display: none;
         }
 
         .filter-btn {
             padding: 8px 15px;
-            margin: 5px;
+            margin: 0 5px;
             border: none;
-            background-color: #ddd;
+            background-color: #e0e0e0;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .filter-btn:hover, .filter-btn.active {
@@ -51,81 +68,87 @@
 
         .products-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
         .product-card {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
 
-        .product-card:hover {
-            transform: translateY(-5px);
+        .product-card:active {
+            transform: scale(0.98);
         }
 
         .product-image {
             width: 100%;
-            height: 200px;
+            height: 120px;
             object-fit: cover;
         }
 
         .product-info {
-            padding: 15px;
+            padding: 10px;
         }
 
         .product-title {
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
             color: #333;
+            font-weight: 500;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .product-price {
             font-weight: bold;
             color: #4CAF50;
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 1rem;
+            margin-bottom: 6px;
         }
 
         .product-description {
             color: #666;
-            font-size: 14px;
-            margin-bottom: 15px;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
         .product-rating {
             color: #FFD700;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
         }
 
         .add-to-cart {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
-            transition: background-color 0.3s;
+            font-size: 0.85rem;
+            transition: background-color 0.2s;
         }
 
-        .add-to-cart:hover {
-            background-color: #45a049;
+        .add-to-cart:active {
+            background-color: #3d8b40;
         }
 
-        /* Responsive Styles */
-        @media only screen and (max-width: 768px) {
+        /* Untuk tablet */
+        @media only screen and (min-width: 481px) and (max-width: 768px) {
             .products-container {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(3, 1fr);
                 gap: 15px;
             }
 
@@ -134,49 +157,57 @@
             }
 
             .product-title {
-                font-size: 16px;
+                font-size: 1rem;
             }
 
             .product-price {
-                font-size: 18px;
+                font-size: 1.1rem;
             }
 
             .product-description {
-                -webkit-line-clamp: 2;
-                font-size: 12px;
-            }
-
-            .filter-btn {
-                padding: 6px 12px;
-                font-size: 14px;
+                font-size: 0.8rem;
             }
         }
 
-        @media only screen and (max-width: 480px) {
+        /* Untuk desktop */
+        @media only screen and (min-width: 769px) {
+            body {
+                padding: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
             .products-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
             }
 
             .product-image {
-                height: 120px;
-            }
-
-            .product-info {
-                padding: 10px;
+                height: 180px;
             }
 
             .product-title {
-                font-size: 14px;
+                font-size: 1.1rem;
             }
 
             .product-price {
-                font-size: 16px;
+                font-size: 1.2rem;
             }
 
-            .add-to-cart {
-                padding: 8px;
-                font-size: 14px;
+            .product-description {
+                font-size: 0.85rem;
+                -webkit-line-clamp: 3;
+            }
+
+            .filter-container {
+                justify-content: center;
+                flex-wrap: wrap;
+                overflow-x: visible;
+                padding-bottom: 5px;
+            }
+
+            .filter-btn {
+                margin: 5px;
             }
         }
     </style>
@@ -187,7 +218,13 @@
         <p>Temukan produk terbaik untuk kebutuhan Anda</p>
     </div>
 
-
+    <div class="filter-container">
+        <button class="filter-btn active" data-category="all">Semua</button>
+        <button class="filter-btn" data-category="elektronik">Elektronik</button>
+        <button class="filter-btn" data-category="fashion">Fashion</button>
+        <button class="filter-btn" data-category="makanan">Makanan</button>
+        <button class="filter-btn" data-category="perabotan">Perabotan</button>
+    </div>
 
     <div class="products-container" id="productsContainer">
         <!-- Produk akan dimuat melalui JavaScript -->
@@ -199,7 +236,7 @@
             {
                 id: 1,
                 title: "Smartphone X1",
-                price: "Rp 4.999.000",
+                price: "Rp4.999K",
                 description: "Smartphone flagship dengan kamera 108MP dan baterai tahan lama.",
                 image: "https://via.placeholder.com/300x200?text=Smartphone",
                 category: "elektronik",
@@ -208,7 +245,7 @@
             {
                 id: 2,
                 title: "Kemeja Slim Fit",
-                price: "Rp 299.000",
+                price: "Rp299K",
                 description: "Kemeja pria slim fit dengan bahan katun premium yang nyaman.",
                 image: "https://via.placeholder.com/300x200?text=Kemeja",
                 category: "fashion",
@@ -217,7 +254,7 @@
             {
                 id: 3,
                 title: "Kopi Arabika",
-                price: "Rp 75.000",
+                price: "Rp75K",
                 description: "Kopi arabika kualitas premium dari perkebunan di Jawa Barat.",
                 image: "https://via.placeholder.com/300x200?text=Kopi",
                 category: "makanan",
@@ -225,8 +262,8 @@
             },
             {
                 id: 4,
-                title: "Meja Kerja Minimalis",
-                price: "Rp 1.250.000",
+                title: "Meja Kerja",
+                price: "Rp1.25JT",
                 description: "Meja kerja modern dengan desain minimalis dan material kayu solid.",
                 image: "https://via.placeholder.com/300x200?text=Meja",
                 category: "perabotan",
@@ -235,7 +272,7 @@
             {
                 id: 5,
                 title: "Headphone Wireless",
-                price: "Rp 1.799.000",
+                price: "Rp1.8JT",
                 description: "Headphone bluetooth dengan noise cancellation dan kualitas suara tinggi.",
                 image: "https://via.placeholder.com/300x200?text=Headphone",
                 category: "elektronik",
@@ -244,7 +281,7 @@
             {
                 id: 6,
                 title: "Celana Jeans",
-                price: "Rp 349.000",
+                price: "Rp349K",
                 description: "Celana jeans pria dengan bahan stretch yang nyaman dipakai seharian.",
                 image: "https://via.placeholder.com/300x200?text=Jeans",
                 category: "fashion",
@@ -252,8 +289,8 @@
             },
             {
                 id: 7,
-                title: "Snack Kacang Almond",
-                price: "Rp 45.000",
+                title: "Snack Almond",
+                price: "Rp45K",
                 description: "Kacang almond panggang tanpa garam, sehat dan bergizi.",
                 image: "https://via.placeholder.com/300x200?text=Almond",
                 category: "makanan",
@@ -262,7 +299,7 @@
             {
                 id: 8,
                 title: "Rak Buku 3 Susun",
-                price: "Rp 599.000",
+                price: "Rp599K",
                 description: "Rak buku minimalis dengan kapasitas besar dan material kayu berkualitas.",
                 image: "https://via.placeholder.com/300x200?text=Rak+Buku",
                 category: "perabotan",
@@ -280,7 +317,7 @@
                 : products.filter(product => product.category === category);
 
             if (filteredProducts.length === 0) {
-                container.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Tidak ada produk yang ditemukan</p>';
+                container.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 20px; color: #666;">Tidak ada produk yang ditemukan</p>';
                 return;
             }
 
@@ -288,7 +325,7 @@
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 productCard.innerHTML = `
-                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                    <img src="${product.image}" alt="${product.title}" class="product-image" loading="lazy">
                     <div class="product-info">
                         <h3 class="product-title">${product.title}</h3>
                         <p class="product-price">${product.price}</p>
@@ -298,6 +335,15 @@
                     </div>
                 `;
                 container.appendChild(productCard);
+            });
+
+            // Tambahkan event listener untuk tombol keranjang
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    alert(`Produk ID ${productId} ditambahkan ke keranjang`);
+                    // Di sini bisa ditambahkan logika untuk menambahkan ke keranjang belanja
+                });
             });
         }
 
@@ -315,26 +361,15 @@
             });
         }
 
-        // Fungsi untuk deteksi perangkat
-        function detectDevice() {
-            const isMobile = window.innerWidth <= 768;
-            if (isMobile) {
-                console.log("Perangkat mobile terdeteksi, menyesuaikan tampilan...");
-                // Penyesuaian tambahan untuk mobile bisa ditambahkan di sini
-            } else {
-                console.log("Perangkat desktop terdeteksi, menyesuaikan tampilan...");
-                // Penyesuaian tambahan untuk desktop bisa ditambahkan di sini
-            }
-        }
-
-        // Event listener untuk resize window
-        window.addEventListener('resize', detectDevice);
-
         // Inisialisasi
         document.addEventListener('DOMContentLoaded', () => {
             displayProducts();
             setupFilterButtons();
-            detectDevice();
+            
+            // Optimasi untuk touch devices
+            if ('ontouchstart' in window) {
+                document.body.classList.add('touch-device');
+            }
         });
     </script>
 </body>
