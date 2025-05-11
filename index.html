@@ -1,116 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HOTVIRAL OFFICIAL</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etalase Produk</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            margin: 5px;
+            border: none;
+            background-color: #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #4CAF50;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-rating {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            .products-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
+            .product-image {
+                height: 150px;
+            }
+
+            .product-title {
+                font-size: 16px;
+            }
+
+            .product-price {
+                font-size: 18px;
+            }
+
+            .product-description {
+                -webkit-line-clamp: 2;
+                font-size: 12px;
+            }
+
+            .filter-btn {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .products-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .product-image {
+                height: 120px;
+            }
+
+            .product-info {
+                padding: 10px;
+            }
+
+            .product-title {
+                font-size: 14px;
+            }
+
+            .product-price {
+                font-size: 16px;
+            }
+
+            .add-to-cart {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="text">YANG MAU MASUK GROUP BOKEP HOTVIRAL KLIK AJA OPSI DIBAWAH INI AKAN TERHUBUNG KE ADMIN</div>
-    <button onclick="window.location.href='https://wa.me/6288808383574?text=mau%20join%20group%20min'" style="display: block; margin: 10px auto; padding: 10px 20px; font-size: 16px; cursor: pointer;">KLIK DISINI</button>
-  <main class="container">
+    <div class="header">
+        <h1>Etalase Produk Kami</h1>
+        <p>Temukan produk terbaik untuk kebutuhan Anda</p>
+    </div>
 
 
 
+    <div class="products-container" id="productsContainer">
+        <!-- Produk akan dimuat melalui JavaScript -->
+    </div>
 
+    <script>
+        // Data produk
+        const products = [
+            {
+                id: 1,
+                title: "Smartphone X1",
+                price: "Rp 4.999.000",
+                description: "Smartphone flagship dengan kamera 108MP dan baterai tahan lama.",
+                image: "https://via.placeholder.com/300x200?text=Smartphone",
+                category: "elektronik",
+                rating: "★★★★★"
+            },
+            {
+                id: 2,
+                title: "Kemeja Slim Fit",
+                price: "Rp 299.000",
+                description: "Kemeja pria slim fit dengan bahan katun premium yang nyaman.",
+                image: "https://via.placeholder.com/300x200?text=Kemeja",
+                category: "fashion",
+                rating: "★★★★☆"
+            },
+            {
+                id: 3,
+                title: "Kopi Arabika",
+                price: "Rp 75.000",
+                description: "Kopi arabika kualitas premium dari perkebunan di Jawa Barat.",
+                image: "https://via.placeholder.com/300x200?text=Kopi",
+                category: "makanan",
+                rating: "★★★★★"
+            },
+            {
+                id: 4,
+                title: "Meja Kerja Minimalis",
+                price: "Rp 1.250.000",
+                description: "Meja kerja modern dengan desain minimalis dan material kayu solid.",
+                image: "https://via.placeholder.com/300x200?text=Meja",
+                category: "perabotan",
+                rating: "★★★★☆"
+            },
+            {
+                id: 5,
+                title: "Headphone Wireless",
+                price: "Rp 1.799.000",
+                description: "Headphone bluetooth dengan noise cancellation dan kualitas suara tinggi.",
+                image: "https://via.placeholder.com/300x200?text=Headphone",
+                category: "elektronik",
+                rating: "★★★★★"
+            },
+            {
+                id: 6,
+                title: "Celana Jeans",
+                price: "Rp 349.000",
+                description: "Celana jeans pria dengan bahan stretch yang nyaman dipakai seharian.",
+                image: "https://via.placeholder.com/300x200?text=Jeans",
+                category: "fashion",
+                rating: "★★★☆☆"
+            },
+            {
+                id: 7,
+                title: "Snack Kacang Almond",
+                price: "Rp 45.000",
+                description: "Kacang almond panggang tanpa garam, sehat dan bergizi.",
+                image: "https://via.placeholder.com/300x200?text=Almond",
+                category: "makanan",
+                rating: "★★★★☆"
+            },
+            {
+                id: 8,
+                title: "Rak Buku 3 Susun",
+                price: "Rp 599.000",
+                description: "Rak buku minimalis dengan kapasitas besar dan material kayu berkualitas.",
+                image: "https://via.placeholder.com/300x200?text=Rak+Buku",
+                category: "perabotan",
+                rating: "★★★☆☆"
+            }
+        ];
 
+        // Fungsi untuk menampilkan produk
+        function displayProducts(category = 'all') {
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = '';
 
+            const filteredProducts = category === 'all' 
+                ? products 
+                : products.filter(product => product.category === category);
 
+            if (filteredProducts.length === 0) {
+                container.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Tidak ada produk yang ditemukan</p>';
+                return;
+            }
 
-        <div class="video-box">
-            <img src="image/18.png" alt="Thumbnail for Video 1">
-            <a href="https://videy.co/v?id=QGjWjAJE1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-      
-        <div class="video-box">
-            <img src="image/17.png" alt="Thumbnail for Video 1">
-            <a href="https://videy.co/v?id=pIJsKYvp1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-        
-        <div class="video-box">
-            <img src="image/16.png" alt="Thumbnail for Video 1">
-            <a href="https://videy.co/v?id=9ZGDi1MN1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-        
-        <div class="video-box">
-            <img src="image/15.png" alt="Thumbnail for Video 1">
-            <a href="https://videy.co/v?id=hNkhL5t61" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-price">${product.price}</p>
+                        <div class="product-rating">${product.rating}</div>
+                        <p class="product-description">${product.description}</p>
+                        <button class="add-to-cart" data-id="${product.id}">+ Keranjang</button>
+                    </div>
+                `;
+                container.appendChild(productCard);
+            });
+        }
 
-        <div class="video-box">
-            <img src="image/14.png" alt="Thumbnail for Video 1">
-            <a href="https://videy.co/v?id=pnm5a9Vk1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
+        // Fungsi untuk filter produk
+        function setupFilterButtons() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const category = button.dataset.category;
+                    displayProducts(category);
+                });
+            });
+        }
 
+        // Fungsi untuk deteksi perangkat
+        function detectDevice() {
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                console.log("Perangkat mobile terdeteksi, menyesuaikan tampilan...");
+                // Penyesuaian tambahan untuk mobile bisa ditambahkan di sini
+            } else {
+                console.log("Perangkat desktop terdeteksi, menyesuaikan tampilan...");
+                // Penyesuaian tambahan untuk desktop bisa ditambahkan di sini
+            }
+        }
 
-        <div class="video-box">
-            <img src="image/13.png" alt="Thumbnail for Video 1">
-            <a href="https://videy.co/v?id=SGYW74xu1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-        
-        
-        <div class="video-box">
-            <img src="image/12.png" alt="Thumbnail for Video 1">
-            <a href="https://videy.co/v?id=DNCCheWx1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
+        // Event listener untuk resize window
+        window.addEventListener('resize', detectDevice);
 
-        <div class="video-box">
-            <img src="image/11.png" alt="Thumbnail for Video 1">
-            <a href="https://videy.co/v?id=5A0W6Kkm1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/10.png" alt="Thumbnail for Video 2">
-            <a href="https://videy.co/v?id=EEgfjzvY1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/9.png" alt="Thumbnail for Video 3">
-            <a href="https://videy.co/v?id=rBsbDDrR1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/8.png" alt="Thumbnail for Video 4">
-            <a href="https://videy.co/v?id=d4m1pVix1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/1.png" alt="Thumbnail for Video 5">
-            <a href="https://videy.co/v?id=hGgoXn6w1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/2.png" alt="Thumbnail for Video 6">
-            <a href="https://videy.co/v?id=Cyd3Oz6z1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/3.png" alt="Thumbnail for Video 7">
-            <a href="https://videy.co/v?id=cWeALCWJ1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/4.png" alt="Thumbnail for Video 8">
-            <a href="https://videy.co/v?id=30jmuHfQ1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/5.png" alt="Thumbnail for Video 9">
-            <a href="https://videy.co/v?id=KO92ILLq1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/6.png" alt="Thumbnail for Video 10">
-            <a href="https://videy.co/v?id=aAulfzWi1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        <div class="video-box">
-            <img src="image/7.png" alt="Thumbnail for Video 11">
-            <a href="https://videy.co/v?id=k6Ksb9mt1" target="_blank" class="play-button">TONTON VIDEONYA</a>
-        </div>
-
-        
-    </main>
+        // Inisialisasi
+        document.addEventListener('DOMContentLoaded', () => {
+            displayProducts();
+            setupFilterButtons();
+            detectDevice();
+        });
+    </script>
 </body>
 </html>
