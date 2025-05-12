@@ -14,6 +14,8 @@
       --light: #f8fafc;
       --gray: #64748b;
       --gray-light: #e2e8f0;
+      --shopee: #FF6B00; /* Shopee orange color */
+      --warranty: #dc2626; /* Red color for warranty */
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -48,7 +50,7 @@
       text-decoration: none;
     }
     .nav-links {
-      display: none; /* Hide nav links on mobile */
+      display: none;
     }
     .cart-icon {
       position: relative;
@@ -227,14 +229,26 @@
       gap: 6px;
       font-size: 13px;
     }
+    .btn-shopee {
+      background-color: var(--shopee);
+      color: white;
+    }
+    .btn-shopee:hover {
+      background-color: #e05d00;
+    }
     .btn-primary {
       background-color: var(--primary);
       color: white;
     }
-    .btn-secondary {
-      background-color: white;
-      color: var(--primary);
-      border: 1px solid var(--primary);
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    .btn-warranty {
+      background-color: var(--warranty);
+      color: white;
+    }
+    .btn-warranty:hover {
+      background-color: #c11f1f;
     }
     .product-meta {
       border-top: 1px solid var(--gray-light);
@@ -253,13 +267,11 @@
       color: var(--primary);
       font-size: 14px;
     }
-    /* Hamburger menu for mobile */
     .menu-toggle {
       display: block;
       font-size: 20px;
       cursor: pointer;
     }
-    /* Responsive adjustments */
     @media (min-width: 768px) {
       .container {
         max-width: 1200px;
@@ -322,13 +334,13 @@
         </p>
 
         <div class="action-buttons">
-          <button class="btn btn-primary">
+          <button class="btn btn-shopee">
             <i class="fas fa-shopping-cart"></i> BELI MELALUI SHOPEE
           </button>
-          <button class="btn btn-secondary">
+          <button class="btn btn-primary">
             <i class="fas fa-bolt"></i> BELI MELALUI ADMIN LANGSUNG 
           </button>
-          <button class="btn btn-secondary">
+          <button class="btn btn-warranty">
             <i class="fas fa-shield-alt"></i> CLAIM GARANSI
           </button>
         </div>
@@ -343,13 +355,10 @@
   </div>
 
   <script>
-    // Mobile menu toggle functionality
     document.querySelector('.menu-toggle').addEventListener('click', function() {
-      // You can add mobile menu functionality here
       alert('Menu akan ditampilkan di sini');
     });
 
-    // Thumbnail click to change main image
     document.querySelectorAll('.thumbnail').forEach(thumb => {
       thumb.addEventListener('click', () => {
         const main = document.querySelector('.main-image');
@@ -358,7 +367,6 @@
       });
     });
 
-    // Variant selection
     document.querySelectorAll('.variant-option').forEach(option => {
       option.addEventListener('click', function() {
         document.querySelectorAll('.variant-option').forEach(opt => {
