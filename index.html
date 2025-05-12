@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MIKA CUSTOM BENING SOUL GT 125 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MIKA CUSTOM BENING SOUL GT 125</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
@@ -21,16 +21,16 @@
       background-color: #f1f5f9;
       color: var(--dark);
       line-height: 1.6;
+      font-size: 14px;
     }
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+      width: 100%;
+      padding: 0 15px;
     }
     .header {
       background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 12px 0;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -39,29 +39,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 0 10px;
     }
     .logo {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--primary);
       text-decoration: none;
     }
     .nav-links {
-      display: flex;
-      gap: 25px;
-    }
-    .nav-links a {
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover {
-      color: var(--primary);
+      display: none; /* Hide nav links on mobile */
     }
     .cart-icon {
       position: relative;
-      font-size: 20px;
+      font-size: 18px;
       color: var(--dark);
     }
     .cart-count {
@@ -71,121 +62,117 @@
       background-color: var(--primary);
       color: white;
       border-radius: 50%;
-      width: 18px;
-      height: 18px;
-      font-size: 12px;
+      width: 16px;
+      height: 16px;
+      font-size: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .product-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      display: flex;
+      flex-direction: column;
       background-color: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       overflow: hidden;
-      margin: 40px 0;
-      animation: fadeIn 0.5s ease-out;
+      margin: 15px 0;
     }
     .image-gallery {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      padding: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 10px;
     }
     .main-image {
-      grid-column: span 2;
+      grid-column: span 4;
       width: 100%;
-      height: 400px;
+      height: 250px;
       object-fit: contain;
       background-color: #f8fafc;
-      border-radius: 12px;
-      cursor: zoom-in;
+      border-radius: 8px;
     }
     .thumbnail {
       width: 100%;
-      height: 150px;
+      height: 60px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
       background-color: #f8fafc;
     }
-    .thumbnail:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
     .product-info {
-      padding: 30px 30px 30px 0;
+      padding: 15px;
     }
     .product-title {
-      font-size: 28px;
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .product-rating {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 15px;
+      gap: 5px;
+      margin-bottom: 10px;
     }
-    .stars { color: var(--secondary); }
+    .stars { 
+      color: var(--secondary);
+      font-size: 12px;
+    }
     .review-count {
       color: var(--gray);
-      font-size: 14px;
+      font-size: 12px;
     }
     .product-price {
       display: flex;
       align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 15px;
     }
     .current-price {
-      font-size: 28px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--primary);
     }
     .original-price {
-      font-size: 18px;
+      font-size: 14px;
       color: var(--gray);
       text-decoration: line-through;
     }
     .discount-badge {
       background-color: #fee2e2;
       color: #dc2626;
-      padding: 4px 8px;
+      padding: 2px 6px;
       border-radius: 4px;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
     }
     .product-description {
       color: var(--gray);
-      margin-bottom: 25px;
-      line-height: 1.7;
+      margin-bottom: 15px;
+      font-size: 13px;
+      line-height: 1.5;
     }
     .variant-section {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
     .variant-title {
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: block;
+      font-size: 13px;
     }
     .variant-options {
       display: flex;
-      gap: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     .variant-option {
       border: 1px solid var(--gray-light);
-      padding: 8px 15px;
+      padding: 6px 10px;
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.3s;
-    }
-    .variant-option:hover {
-      border-color: var(--primary);
+      font-size: 12px;
     }
     .variant-option.selected {
       background-color: var(--primary);
@@ -195,8 +182,8 @@
     .quantity-selector {
       display: flex;
       align-items: center;
-      gap: 15px;
-      margin-bottom: 30px;
+      gap: 10px;
+      margin-bottom: 15px;
     }
     .quantity-control {
       display: flex;
@@ -208,27 +195,28 @@
     .quantity-btn {
       background-color: var(--gray-light);
       border: none;
-      width: 36px;
-      height: 36px;
-      font-size: 16px;
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
       cursor: pointer;
     }
     .quantity-input {
-      width: 50px;
-      height: 36px;
+      width: 40px;
+      height: 30px;
       text-align: center;
       border: none;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
     }
     .action-buttons {
       display: flex;
-      gap: 15px;
-      margin-bottom: 30px;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
     }
     .btn {
-      padding: 12px 24px;
-      border-radius: 8px;
+      padding: 10px 15px;
+      border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s;
@@ -236,97 +224,68 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
+      font-size: 13px;
     }
     .btn-primary {
       background-color: var(--primary);
       color: white;
-      flex: 1;
-    }
-    .btn-primary:hover {
-      background-color: var(--primary-dark);
     }
     .btn-secondary {
       background-color: white;
       color: var(--primary);
       border: 1px solid var(--primary);
-      flex: 1;
-    }
-    .btn-secondary:hover {
-      background-color: #f0f4ff;
     }
     .product-meta {
       border-top: 1px solid var(--gray-light);
-      padding-top: 20px;
+      padding-top: 15px;
+      margin-top: 15px;
     }
     .meta-item {
       display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 8px;
+      margin-bottom: 8px;
       color: var(--gray);
+      font-size: 12px;
+      align-items: center;
     }
     .meta-icon {
       color: var(--primary);
+      font-size: 14px;
     }
-    .product-tabs {
-      margin: 40px 0;
-      background-color: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      overflow: hidden;
-    }
-    .tabs-header {
-      display: flex;
-      border-bottom: 1px solid var(--gray-light);
-    }
-    .tab-btn {
-      padding: 15px 25px;
-      background: none;
-      border: none;
-      font-weight: 600;
+    /* Hamburger menu for mobile */
+    .menu-toggle {
+      display: block;
+      font-size: 20px;
       cursor: pointer;
-      position: relative;
-      color: var(--gray);
     }
-    .tab-btn.active { color: var(--primary); }
-    .tab-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: var(--primary);
-    }
-    .tab-content {
-      padding: 30px;
-      display: none;
-    }
-    .tab-content.active { display: block; }
-    @media (max-width: 768px) {
-      .product-container { grid-template-columns: 1fr; gap: 0; }
-      .image-gallery { padding: 15px; }
-      .product-info { padding: 20px; }
-      .action-buttons { flex-direction: column; }
-      .tabs-header { overflow-x: auto; white-space: nowrap; }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Responsive adjustments */
+    @media (min-width: 768px) {
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .product-container {
+        flex-direction: row;
+      }
+      .image-gallery {
+        width: 50%;
+      }
+      .product-info {
+        width: 50%;
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <header class="header">
-    <div class="container header-container">
-      <a href="#" class="logo">TokoKu</a>
-      <div class="nav-links">
-        <a href="index.html">Beranda</a>
-        <a href="#">Produk</a>
-        <a href="#">Kategori</a>
-        <a href="#">Tentang</a>
-        <a href="#">Kontak</a>
+    <div class="header-container">
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
       </div>
+      <a href="#" class="logo">TokoKu</a>
       <a href="#" class="cart-icon">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-count">3</span>
@@ -337,11 +296,11 @@
   <div class="container">
     <div class="product-container">
       <div class="image-gallery">
-        <img src="image/1.png" alt="Foto Produk 1" class="main-image">
-        <img src="image/1.png" alt="Foto Produk 2" class="thumbnail">
-        <img src="image/1.png" alt="Foto Produk 3" class="thumbnail">
-        <img src="image/1.png" alt="Foto Produk 4" class="thumbnail">
-        <img src="image/1.png" alt="Foto Produk 5" class="thumbnail">
+        <img src="image/1.png" alt="MIKA CUSTOM BENING SOUL GT 125" class="main-image">
+        <img src="image/1.png" alt="Thumbnail 1" class="thumbnail">
+        <img src="image/1.png" alt="Thumbnail 2" class="thumbnail">
+        <img src="image/1.png" alt="Thumbnail 3" class="thumbnail">
+        <img src="image/1.png" alt="Thumbnail 4" class="thumbnail">
       </div>
 
       <div class="product-info">
@@ -369,11 +328,7 @@
           <button class="btn btn-secondary">
             <i class="fas fa-bolt"></i> BELI MELALUI ADMIN LANGSUNG 
           </button>
-        </div>
-
-        <!-- Tombol Claim Garansi -->
-        <div style="margin-top: -20px; margin-bottom: 30px;">
-          <button class="btn btn-secondary" style="width: 100%;">
+          <button class="btn btn-secondary">
             <i class="fas fa-shield-alt"></i> CLAIM GARANSI
           </button>
         </div>
@@ -388,20 +343,28 @@
   </div>
 
   <script>
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.tab).classList.add('active');
-      });
+    // Mobile menu toggle functionality
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      // You can add mobile menu functionality here
+      alert('Menu akan ditampilkan di sini');
     });
 
+    // Thumbnail click to change main image
     document.querySelectorAll('.thumbnail').forEach(thumb => {
       thumb.addEventListener('click', () => {
         const main = document.querySelector('.main-image');
         main.src = thumb.src;
         main.alt = thumb.alt;
+      });
+    });
+
+    // Variant selection
+    document.querySelectorAll('.variant-option').forEach(option => {
+      option.addEventListener('click', function() {
+        document.querySelectorAll('.variant-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        this.classList.add('selected');
       });
     });
   </script>
