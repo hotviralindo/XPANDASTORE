@@ -1,387 +1,409 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>XPANDA PROJECT</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
-            padding: 10px;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 0 10px;
-        }
-
-        .header h1 {
-            color: #333;
-            margin-bottom: 8px;
-            font-size: 1.5rem;
-        }
-
-        .header p {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .filter-container {
-            display: flex;
-            overflow-x: auto;
-            padding: 5px 0 15px;
-            margin-bottom: 10px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-
-        .filter-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .filter-btn {
-            padding: 8px 15px;
-            margin: 0 5px;
-            border: none;
-            background-color: #e0e0e0;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .products-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .product-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .product-card:active {
-            transform: scale(0.98);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 120px;
-            object-fit: contain;
-            background-color: #f0f0f0;
-            padding: 10px;
-        }
-
-        .product-info {
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .product-title {
-            font-size: 0.95rem;
-            margin-bottom: 6px;
-            color: #333;
-            font-weight: 500;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .product-price {
-            font-weight: bold;
-            color: #4CAF50;
-            font-size: 1rem;
-            margin-bottom: 6px;
-        }
-
-        .product-description {
-            color: #666;
-            font-size: 0.75rem;
-            margin-bottom: 10px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            flex-grow: 1;
-        }
-
-        .product-rating {
-            color: #FFD700;
-            margin-bottom: 8px;
-            font-size: 0.8rem;
-        }
-
-        .buy-now-container {
-            margin-top: auto;
-        }
-
-        .buy-now {
-            width: 100%;
-            padding: 8px;
-            background-color: #2196F3;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .buy-now:active {
-            background-color: #0b7dda;
-        }
-
-        .buy-now::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
-
-        .buy-now:focus:not(:active)::after {
-            animation: ripple 0.6s ease-out;
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
-            }
-        }
-
-        @media only screen and (min-width: 481px) and (max-width: 768px) {
-            .products-container {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
-            }
-
-            .product-image {
-                height: 150px;
-            }
-
-            .product-title {
-                font-size: 1rem;
-            }
-
-            .product-price {
-                font-size: 1.1rem;
-            }
-
-            .product-description {
-                font-size: 0.8rem;
-            }
-        }
-
-        @media only screen and (min-width: 769px) {
-            body {
-                padding: 20px;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
-            .products-container {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
-            }
-
-            .product-image {
-                height: 180px;
-            }
-
-            .product-title {
-                font-size: 1.1rem;
-            }
-
-            .product-price {
-                font-size: 1.2rem;
-            }
-
-            .product-description {
-                font-size: 0.85rem;
-                -webkit-line-clamp: 3;
-            }
-
-            .filter-container {
-                justify-content: center;
-                flex-wrap: wrap;
-                overflow-x: visible;
-                padding-bottom: 5px;
-            }
-
-            .filter-btn {
-                margin: 5px;
-            }
-
-            .buy-now:hover {
-                background-color: #0b7dda;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MIKA CUSTOM BENING SOUL GT 125 </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background-color: #f1f5f9;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+    .nav-links a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .cart-icon {
+      position: relative;
+      font-size: 20px;
+      color: var(--dark);
+    }
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      margin: 40px 0;
+      animation: fadeIn 0.5s ease-out;
+    }
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 20px;
+    }
+    .main-image {
+      grid-column: span 2;
+      width: 100%;
+      height: 400px;
+      object-fit: contain;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      cursor: zoom-in;
+    }
+    .thumbnail {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-color: #f8fafc;
+    }
+    .thumbnail:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .product-info {
+      padding: 30px 30px 30px 0;
+    }
+    .product-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+    .stars { color: var(--secondary); }
+    .review-count {
+      color: var(--gray);
+      font-size: 14px;
+    }
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .current-price {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .original-price {
+      font-size: 18px;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+    .discount-badge {
+      background-color: #fee2e2;
+      color: #dc2626;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .product-description {
+      color: var(--gray);
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+    .variant-section {
+      margin-bottom: 25px;
+    }
+    .variant-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .variant-options {
+      display: flex;
+      gap: 10px;
+    }
+    .variant-option {
+      border: 1px solid var(--gray-light);
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .variant-option:hover {
+      border-color: var(--primary);
+    }
+    .variant-option.selected {
+      background-color: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--gray-light);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .quantity-btn {
+      background-color: var(--gray-light);
+      border: none;
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .quantity-input {
+      width: 50px;
+      height: 36px;
+      text-align: center;
+      border: none;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      flex: 1;
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    .btn-secondary {
+      background-color: white;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      flex: 1;
+    }
+    .btn-secondary:hover {
+      background-color: #f0f4ff;
+    }
+    .product-meta {
+      border-top: 1px solid var(--gray-light);
+      padding-top: 20px;
+    }
+    .meta-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      color: var(--gray);
+    }
+    .meta-icon {
+      color: var(--primary);
+    }
+    .product-tabs {
+      margin: 40px 0;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .tabs-header {
+      display: flex;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .tab-btn {
+      padding: 15px 25px;
+      background: none;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      color: var(--gray);
+    }
+    .tab-btn.active { color: var(--primary); }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--primary);
+    }
+    .tab-content {
+      padding: 30px;
+      display: none;
+    }
+    .tab-content.active { display: block; }
+    @media (max-width: 768px) {
+      .product-container { grid-template-columns: 1fr; gap: 0; }
+      .image-gallery { padding: 15px; }
+      .product-info { padding: 20px; }
+      .action-buttons { flex-direction: column; }
+      .tabs-header { overflow-x: auto; white-space: nowrap; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <h1>XPANDA PROJECT STORE</h1>
-        <p>Temukan produk terbaik untuk kebutuhan Anda</p>
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo">TokoKu</a>
+      <div class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="#">Produk</a>
+        <a href="#">Kategori</a>
+        <a href="#">Tentang</a>
+        <a href="#">Kontak</a>
+      </div>
+      <a href="#" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">3</span>
+      </a>
     </div>
+  </header>
 
-    <div class="filter-container">
-        <button class="filter-btn" data-category="mikastoplamp">Mika Stoplamp</button>
-        <button class="filter-btn" data-category="elektronik">Elektronik</button>
-        <button class="filter-btn" data-category="fashion">Custom Cetakan</button>
-        <button class="filter-btn" data-category="makanan">Resin</button>
+  <div class="container">
+    <div class="product-container">
+      <div class="image-gallery">
+        <img src="1.png" alt="Foto Produk 1" class="main-image">
+        <img src="1.png" alt="Foto Produk 2" class="thumbnail">
+        <img src="1.png" alt="Foto Produk 3" class="thumbnail">
+        <img src="1.png" alt="Foto Produk 4" class="thumbnail">
+        <img src="1.png" alt="Foto Produk 5" class="thumbnail">
+      </div>
+
+      <div class="product-info">
+        <h1 class="product-title">MIKA CUSTOM BENING SOUL GT 125</h1>
+        <div class="product-rating">
+          <div class="stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <span class="review-count">(142 ulasan)</span>
+        </div>
+        <div class="product-price">
+          <span class="current-price">Rp 130.000</span>
+          <span class="original-price">Rp 180.000</span>
+        </div>
+        <p class="product-description">
+          Mika custom bening soul gt 125 pnp atau tinggal pasang saja ke housing motor tanpa perlu penyesuaian apapun gratis ongkir ke seluruh pulau jawa khusus pembelian yang melalui admin langsung silahkan klik tombol dibawah ini mau membeli melalui shopee atau pembelian langsung melalui admin
+        </p>
+
+        <div class="action-buttons">
+          <button class="btn btn-primary">
+            <i class="fas fa-shopping-cart"></i> BELI MELALUI SHOPEE
+          </button>
+          <button class="btn btn-secondary">
+            <i class="fas fa-bolt"></i> BELI MELALUI ADMIN LANGSUNG 
+          </button>
+        </div>
+
+        <!-- Tombol Claim Garansi -->
+        <div style="margin-top: -20px; margin-bottom: 30px;">
+          <button class="btn btn-secondary" style="width: 100%;">
+            <i class="fas fa-shield-alt"></i> CLAIM GARANSI
+          </button>
+        </div>
+
+        <div class="product-meta">
+          <div class="meta-item"><i class="fas fa-truck meta-icon"></i><span>Gratis Ongkir & Pengiriman Cepat</span></div>
+          <div class="meta-item"><i class="fas fa-shield-alt meta-icon"></i><span>Garansi 1 Tahun</span></div>
+          <div class="meta-item"><i class="fas fa-undo meta-icon"></i><span>Pengembalian 14 Hari</span></div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="products-container">
-        <div class="product-card" data-category="mikastoplamp">
-            <img class="product-image" src="1.png" alt="Mika Stoplamp">
-            <div class="product-info">
-                <div class="product-title">MIKA STOPLAMP SOUL GT 125</div>
-                <div class="product-price">Rp 150.000</div>
-                <div class="product-description">Mika stoplamp custom soul gt 125 bening pnp ke motor tinggal di pasang aja</div>
-                 <div class="product-rating"></div>
-                 
-                <div class="product-rating">★★★★★</div>
-                <div class="buy-now-container">
-                    <a href="http://lynk.id/xpandaproject/66034qk6vx5r/checkout" class="buy-now" target="_blank">Beli Sekarang</a>
-                </div>
-            </div>
-        </div>
+  <script>
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
 
-        <div class="product-card" data-category="mikastoplamp">
-            <img class="product-image" src="1.png" alt="Mika Stoplamp">
-            <div class="product-info">
-                <div class="product-title">Mika Stoplamp Mobil XPANDER</div>
-                <div class="product-price">Rp 150.000</div>
-                <div class="product-description">Mika stoplamp berkualitas tinggi untuk mobil Xpander. Tahan lama dan mudah dipasang.</div>
-                <div class="product-rating">★★★★★</div>
-                <div class="buy-now-container">
-                    <a href="https://wa.me/6281234567890?text=Halo%2C+saya+mau+beli+Mika+Stoplamp" class="buy-now" target="_blank">Beli Sekarang</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card" data-category="mikastoplamp">
-            <img class="product-image" src="1.png" alt="Mika Stoplamp">
-            <div class="product-info">
-                <div class="product-title">Mika Stoplamp Mobil XPANDER</div>
-                <div class="product-price">Rp 150.000</div>
-                <div class="product-description">Mika stoplamp berkualitas tinggi untuk mobil Xpander. Tahan lama dan mudah dipasang.</div>
-                <div class="product-rating">★★★★★</div>
-                <div class="buy-now-container">
-                    <a href="https://wa.me/6281234567890?text=Halo%2C+saya+mau+beli+Mika+Stoplamp" class="buy-now" target="_blank">Beli Sekarang</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card" data-category="elektronik">
-            <img class="product-image" src="1.png" alt="Charger USB">
-            <div class="product-info">
-                <div class="product-title">Charger USB Fast Charging</div>
-                <div class="product-price">Rp 75.000</div>
-                <div class="product-description">Charger cepat dengan 2 port USB, cocok untuk semua jenis perangkat.</div>
-                <div class="product-rating">★★★★☆</div>
-                <div class="buy-now-container">
-                    <a href="https://wa.me/6281234567890?text=Halo%2C+saya+mau+beli+Charger+USB" class="buy-now" target="_blank">Beli Sekarang</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card" data-category="fashion">
-            <img class="product-image" src="cetak.jpg" alt="Mug Custom">
-            <div class="product-info">
-                <div class="product-title">Mug Custom dengan Nama</div>
-                <div class="product-price">Rp 750.000</div>
-                <div class="product-description">Mug keramik custom desain bebas, cocok untuk kado atau keperluan pribadi.</div>
-                <div class="product-rating">★★★★★</div>
-                <div class="buy-now-container">
-                    <a href="https://wa.me/6281234567890?text=Halo%2C+saya+mau+beli+Mug+Custom" class="buy-now" target="_blank">Beli Sekarang</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-card" data-category="makanan">
-            <img class="product-image" src="1.png" alt="Resin Art">
-            <div class="product-info">
-                <div class="product-title">Kerajinan Resin Unik</div>
-                <div class="product-price">Rp 120.000</div>
-                <div class="product-description">Dekorasi dari resin dengan desain estetik untuk hiasan rumah atau meja kerja.</div>
-                <div class="product-rating">★★★★☆</div>
-                <div class="buy-now-container">
-                    <a href="https://wa.me/6281234567890?text=Halo%2C+saya+mau+beli+Kerajinan+Resin" class="buy-now" target="_blank">Beli Sekarang</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const productCards = document.querySelectorAll('.product-card');
-
-        function filterCategory(category) {
-            filterButtons.forEach(btn => {
-                const btnCategory = btn.getAttribute('data-category');
-                btn.classList.toggle('active', btnCategory === category);
-            });
-
-            productCards.forEach(card => {
-                card.style.display = card.getAttribute('data-category') === category ? 'block' : 'none';
-            });
-        }
-
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const category = btn.getAttribute('data-category');
-                filterCategory(category);
-            });
-        });
-
-        // Tampilkan "Mika Stoplamp" saat halaman dibuka
-        window.onload = () => {
-            filterCategory('mikastoplamp');
-        };
-    </script>
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const main = document.querySelector('.main-image');
+        main.src = thumb.src;
+        main.alt = thumb.alt;
+      });
+    });
+  </script>
 </body>
 </html>
